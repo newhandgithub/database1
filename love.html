@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表白网页</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 192, 203, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .options {
+            margin-top: 20px;
+        }
+        .options button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        .options button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h2>你喜欢我吗？</h2>
+        <div class="options">
+            <button id="likeButton">喜欢</button>
+            <button id="dislikeButton">不喜欢</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById('modal');
+    var likeButton = document.getElementById('likeButton');
+    var dislikeButton = document.getElementById('dislikeButton');
+    var isSwapped = false; // 用于跟踪按钮是否已经互换
+
+    modal.style.display = 'flex';
+
+    dislikeButton.addEventListener('click', function() {
+        if (!isSwapped) {
+            // 互换按钮
+            var temp = likeButton.innerHTML;
+            likeButton.innerHTML = dislikeButton.innerHTML;
+            dislikeButton.innerHTML = temp;
+            isSwapped = true;
+        }
+    });
+
+    likeButton.addEventListener('click', function() {
+        if (isSwapped) {
+            // 如果已经互换过，再次互换回来
+            var temp = likeButton.innerHTML;
+            likeButton.innerHTML = dislikeButton.innerHTML;
+            dislikeButton.innerHTML = temp;
+            isSwapped = false;
+        } else {
+            modal.style.display = 'none';
+            alert('我也喜欢你');
+            // 这里添加生成跳转链接的代码
+            window.location.href = './aixin.html';
+        }
+    });
+</script>
+
+</body>
+</html>
